@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una Propuesta Especial</title>
+    <style>
+        /* Estilos Generales */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Evita scroll horizontal por fuegos artificiales */
+            position: relative; /* Necesario para posicionar los fuegos artificiales */
+            min-height: 100vh;
+        }
+
+        .page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        /* --- Estilos Página 1 --- */
+        #page1 {
+            background-color: #ffccd5; /* Fondo rosa claro */
+        }
+
+        .heart-container {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .heart {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background-color: #e01b1b; /* Rojo */
+            transform: rotate(-45deg);
+            animation: pulse 1.5s infinite;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: #e01b1b; /* Rojo */
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -75px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: 75px;
+        }
+
+        /* Animación de latido */
+        @keyframes pulse {
+            0% { transform: rotate(-45deg) scale(1); }
+            50% { transform: rotate(-45deg) scale(1.1); }
+            100% { transform: rotate(-45deg) scale(1); }
+        }
+
+        .heart-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg); /* Centra y corrige rotación */
+            color: white;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            width: 180px; /* Ajusta según sea necesario */
+            z-index: 1; /* Asegura que esté sobre el corazón */
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 20px; /* Espacio entre botones */
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+        
+        button:active {
+            transform: scale(0.95);
+        }
+
+        #btn-bueno {
+            background-color: #ff6b6b; /* Rojo claro */
+            color: white;
+        }
+
+        #btn-si-amor {
+            background-color: #4caf50; /* Verde */
+            color: white;
+        }
+
+        /* --- Estilos Página 2 --- */
+        #page2 {
+            display: none; /* Oculta por defecto */
+            background-image: url('https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/1C90FC05DCE986E37D6F434A434CB697ADFB849FCD7284204D2DEEC7D7254C31/scale?width=1200&aspectRatio=1.78&format=webp'); /* ! REEMPLAZA ESTA URL ! */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white; /* Texto blanco para contraste */
+        }
+        
+        /* Capa semitransparente para mejorar legibilidad del texto sobre el fondo */
+        #page2 .content-wrapper {
+            background-color: rgba(0, 0, 0, 0.6); /* Fondo negro semitransparente */
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 80%;
+        }
+
+        #page2 h2 {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para legibilidad */
+        }
+        
+        #btn-no {
+             background-color: #f44336; /* Rojo */
+             color: white;
+        }
+        
+        #btn-siiii {
+             background-color: #ffeb3b; /* Amarillo */
+             color: #333; /* Texto oscuro para contraste */
+        }
+
+        /* --- Estilos Fuegos Artificiales (Simples) --- */
+        .particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            pointer-events: none; /* Para no interferir con clics */
+            opacity: 1;
+            z-index: 1000; /* Encima de todo */
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Página 1: El Corazón -->
+    <div id="page1" class="page">
+        <div class="heart-container">
+            <div class="heart"></div>
+            <div class="heart-text">No te enojes conmigo y dejá de pelearme</div>
+        </div>
+        <div class="buttons-container">
+            <button id="btn-bueno">Bueno</button>
+            <button id="btn-si-amor">Si mi amor mi bombom</button>
+        </div>
+    </div>
+
+    <!-- Página 2: Darth Vader -->
+    <div id="page2" class="page">
+       <div class="content-wrapper">
+            <h2>Si me queres, nos vemos mañana? Vamos a ver Star Wars?</h2>
+            <div class="buttons-container">
+                <button id="btn-no">No 😞🥺</button>
+                <button id="btn-siiii">SIIIII owo</button>
+            </div>
+       </div>
+    </div>
+
+    <script>
+        // Espera a que el DOM esté completamente cargado
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Elementos del DOM
+            const page1 = document.getElementById('page1');
+            const page2 = document.getElementById('page2');
+
+            const btnBueno = document.getElementById('btn-bueno');
+            const btnSiAmor = document.getElementById('btn-si-amor');
+            const btnNo = document.getElementById('btn-no');
+            const btnSiiii = document.getElementById('btn-siiii');
+
+            // --- Lógica Página 1 ---
+
+            btnBueno.addEventListener('click', function() {
+                alert('botón incorrecto :(');
+            });
+
+            btnSiAmor.addEventListener('click', function() {
+                // 1. Efecto de fuegos artificiales (simple)
+                createFireworks();
+
+                // 2. Esperar un poco para que se vea el efecto y luego cambiar de página
+                setTimeout(() => {
+                    page1.style.display = 'none'; // Oculta página 1
+                    page2.style.display = 'flex';  // Muestra página 2 (usamos flex por el CSS)
+                }, 1500); // Espera 1.5 segundos
+            });
+
+            // --- Lógica Página 2 ---
+
+            btnNo.addEventListener('click', function() {
+                alert('Por que sos tan mala???');
+            });
+
+            btnSiiii.addEventListener('click', function() {
+                alert('YUPIIIIIIIIII, despues chapemos fuerte queres?');
+            });
+
+            // --- Función para Fuegos Artificiales (Simple) ---
+            function createFireworks() {
+                const fireworksContainer = document.body; // O podría ser page1 si prefieres
+                const particleCount = 50; // Número de partículas
+                const colors = ['#ff4757', '#ff6b81', '#ffa502', '#ffda79', '#2ed573', '#1e90ff', '#7d5fff']; // Paleta de colores
+
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.classList.add('particle');
+
+                    // Posición aleatoria en la pantalla
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    particle.style.left = `${x}px`;
+                    particle.style.top = `${y}px`;
+
+                    // Color aleatorio
+                    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+                    // Añade un ligero movimiento aleatorio extra (opcional)
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * 30 + 10; // Se mueve entre 10 y 40px
+                    particle.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(1)`;
+
+
+                    fireworksContainer.appendChild(particle);
+
+                    // Elimina la partícula del DOM después de la animación para limpiar
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 1000); // Coincide con la duración de la animación fadeOut
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
